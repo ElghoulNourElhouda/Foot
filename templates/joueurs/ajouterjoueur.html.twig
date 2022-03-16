@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+ {% block body %}
+        <center><h3> Ajouter un joueur</h3></center>
+        <!-- BASIC FORM ELELEMNTS -->
+        <div class="row mt">
+          <div class="col-lg-6 col-md-6 col-sm-6">
+            {{ form_start(forms)}}
+                      <div class="form-group">
+                        {{ form_row(forms.nom, {label: 'Nom :'
+                                                     }
+                                                      )}}
+                      
+                      
+                        {{ form_row(forms.prenom, {label: 'Prénom :'
+                                                    }
+                                                    )}}
+                         {{ form_row(forms.email, {label: 'Email :'
+                                                    }
+                                                    )}}
+                                                   
+                          {{ form_row(forms.datenaissance, {label: 'Date de naissance :',
+                                              
+                                             })}} 
+                         
+                                             <br>   
+                         {{ form_row(forms.equipe, {label: 'Equipe  :',
+                                                      row_attr: {
+                                                                class: 'form-group'}})}}   
+                                                                             
+                      </div>
+                    
+                        <center>
+                          <button type="submit" class="btn btn-theme">Enregistrer </button>
+                          {{ form_end(forms) }} 
+                        </center>
+                                 
+          </div>
+
+        
+        </div>
+        <!-- /row -->
+
+{% endblock %}  

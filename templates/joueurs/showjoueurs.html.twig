@@ -1,0 +1,51 @@
+
+  {% extends 'base.html.twig' %}
+ {% block body %} 
+  <center><h3> La liste des joueurs</h3></center>
+      
+        <!-- row -->
+        <div class="row mt">
+          <div class="col-md-12">
+            <div class="content-panel">
+              <table class="table table-striped table-advance table-hover">
+               
+                <hr>
+                <thead>
+              
+                  <tr>
+                 
+                    <th><i class="fa fa-bullhorn"></i> Nom</th>
+                    <th class="hidden-phone"><i class="fa fa-question-circle"></i> Prénom</th>
+                    <th><i class="fa fa-bookmark"></i> Email</th>
+                    <th><i class="fa fa-home"></i> Equipe</th>
+                     
+                    <th></th>
+                  </tr>
+                  
+                </thead>
+                <tbody>
+                   {% if joueur %}
+                  <tr>
+                   {% for jr in joueur %}
+                    <td>{{jr.nom}}</td>
+                      <td>{{jr.prenom}}</td>
+                      <td>{{jr.email}}</td>
+                      <td>{{jr.equipe.nom}}</td>
+                    <td>
+                     <!--  <a href="/joueurs/showstatjou/{{jr.id}}"  class="btn btn-success btn-xs" ><i class="fa fa-file-text-o"></i></a> -->
+                      <a href="/joueurs/statiquejoueur/{{jr.id}}"  class="btn btn-primary btn-xs" ><i class="fa fa-plus-square"></i></a> 
+                       <!-- <a href="/joueurs/deletejoueurs/{{jr.id}}"  class="btn btn-danger btn-xs" onclick="return confirm('Attention ! si va supprimer le client selectionnez')"><i class="fa fa-trash-o "></i></a> -->      
+                    </td>
+                  </tr>
+
+                  {% endfor %}
+                  {% endif %}
+                </tbody>
+              </table>
+            </div>
+            <!-- /content-panel -->
+          </div>
+          <!-- /col-md-12 -->
+        </div>
+        <!-- /row -->
+  {% endblock %}  

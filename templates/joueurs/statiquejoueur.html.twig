@@ -1,0 +1,73 @@
+
+{% extends 'base.html.twig' %}
+ {% block body %}
+
+<center><h3> Ajouter une statistique d'un joueur</h3></center>
+        <br>
+        {% if joueur %}
+        <span><h4> Nom d'équipe actuel : {{joueur.equipe.nom}}<br>
+               Nom de joueur : {{joueur.nom}} {{joueur.prenom}}<br>
+        </h4></span>
+        {% endif %}
+        <br>
+        <!-- BASIC FORM ELELEMNTS -->
+        <div class="row mt">
+          <div class="col-lg-6 col-md-6 col-sm-6">
+          {% for message in app.flashes('error') %}
+                                                <div class="alert alert-danger alert-dismissible">
+                                                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                                  <h5><i class="fa-solid fa-lightbulb-exclamation-on"></i> {{ message }}</h5>
+                                                </div>
+                                            {% endfor %}
+              {{ form_start(forms, {'action': path('statiquejoueur',{ 'id': joueur.id }), 'method': 'POST'}) }}
+                      <div class="form-group">
+                        {{ form_row(forms.nbrematchs, {label: 'Nombre de matchs joués :'
+                                                     }
+                                                      )}}
+                      
+                      
+                        {{ form_row(forms.nbreminutes, {label: 'Nombre de minutes jouées :'
+                                                    }
+                                                    )}}
+                         {{ form_row(forms.nbrepasses, {label: 'Nombre de passes décisives :'
+                                                    }
+                                                    )}}
+                                                   
+                          {{ form_row(forms.nbrebuts, {label: 'Nombre de buts marqués :',
+                                              
+                                             })}}
+                                             
+                        <br>                       
+                        {{ form_row(forms.saison, {label: 'Date de saison :',
+                                              
+                                             })}}  
+
+                        {{ form_row(forms.equipe, {label: 'Equipe :',
+                                              
+                                             })}}  
+                        <br>                       
+                        <center>
+                          <button type="submit" class="btn btn-theme">Enregistrer </button>
+                          {{ form_end(forms) }} 
+                        </center>
+                        
+         
+          </div>
+
+        
+        </div>
+        <!-- /row -->
+
+                      </div>
+                    
+
+{% endblock %}
+
+  {% block javascript %}
+  <script>
+                        
+                   $(document).ready(function(){
+  document.getElementById("stat_equipe").value = {{joueur.equipe.id}};
+});
+                   </script>
+  {% endblock %}

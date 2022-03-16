@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+ {% block body %}
+       <center> <h3> Ajouter une saison</h3></center>
+       <br>
+        <!-- BASIC FORM ELELEMNTS -->
+        <div class="row mt">
+          <div class="col-lg-6 col-md-6 col-sm-6">
+            {{ form_start(forms)}}
+                      <div class="form-group">
+                        {{ form_row(forms.date, {label: 'Date de saison:'
+                                                     }
+                                                      )}}
+                      </div>
+                    
+                        <center>
+                          <button type="submit" class="btn btn-theme">Enregistrer </button>
+                          {{ form_end(forms) }} 
+                        </center>
+                                 
+          </div>
+
+        
+        </div>
+        <!-- /row -->
+{% endblock %}  

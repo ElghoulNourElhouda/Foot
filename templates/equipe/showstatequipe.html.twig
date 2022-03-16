@@ -1,0 +1,65 @@
+  {% extends 'base.html.twig' %}
+ {% block body %}
+ <style>
+select{
+  width:20%;
+  height:30px;
+}
+</style>
+      <center><h3> La liste des joueurs de l'équipe <b>{{equipe.nom}}</b></h3></center>
+        
+        <div class="row">
+        <div class="col-md-12">
+            <div class="content-panel">
+            
+      
+           <div class="card-footer">
+        <div>
+        <form  method="POST" action="{{path('showstatequipe',{ 'id': id })}}">
+     
+<select name="saisonselect" id="saisonselect" > 
+<option value="{{saison}}" selected> {{saison}}</option>
+{% for sa in saisons %}
+{% if sa.date != saison %}
+<option value="{{sa.date}}" > {{sa.date}}</option>
+{% endif %}
+{% endfor %}
+</select>
+<input type="submit" value="Recherche" class="btn btn-theme" />
+        </form>
+            <br>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Date de naissance</th>
+                    <th>Matchs_jouès</th>
+                    <th>Buts</th>
+                    <th>Minutes_jouèes</th>
+                    <th>Passes_décisives</th>
+                  </tr>
+                </thead>
+                <tbody>
+               
+                  <tr>
+                  {% for S in statjoueurs%}
+                  
+                    <td>{{S.joueur.nom}}</td>
+                    <td>{{S.joueur.prenom}}</td>
+                    <td>{{S.joueur.datenaissance|date('d/m/y')}}</td>
+                    <td>{{S.nbrematchs}}</td>
+                    <td>{{S.nbrebuts}}</td>
+                    <td>{{S.nbreminutes}}</td>
+                    <td>{{S.nbrepasses}}</td>
+                   
+                  </tr>
+                  {% endfor %}
+                   
+                </tbody>
+              </table>
+              
+            </div>
+          </div>
+        </div>
+       {% endblock %}  
